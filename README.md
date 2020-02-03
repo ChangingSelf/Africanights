@@ -13,7 +13,24 @@
 ## 进度
 
 - [x] 从1~6星中抽取星级
+- [ ] 从文件载入卡池简历
 - [ ] 从对应星级的简历池，抽取下一份简历
+
+
+
+## 数据文件格式示例
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resume>
+    <name>玫兰莎</name>
+    <star>3</star>
+    <chat>......玫兰莎。从现在起，我的利刃将为您所用。</chat>
+    <portrayal>image/Melantha.jpg</portrayal>
+</resume>
+```
+
+
 
 
 

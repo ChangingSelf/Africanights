@@ -10,6 +10,12 @@ public class Resume {
 	protected String m_chat = "";//台词
 	protected String m_portrayal = "";//立绘路径
 	
+	public Resume(String name,int star,String chat,String portrayal) {
+		m_name = name;
+		m_star = star;
+		m_chat = chat;
+		m_portrayal = portrayal;
+	}
 
 	public String getName() {
 		return m_name;

@@ -7,16 +7,55 @@ package africanights.model;
 
 
 import java.util.Random;
+import java.util.Vector;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
 public class Pool {
 	
 	protected double[] m_starProbability = new double[] {
-			0.00,0.00,0.00,//1,2星
+			0.00,
+			0.00,0.00,//1,2星
 			0.40,0.50,//3,4星
 			0.08,0.02//5,6星
 	};//星级出率，下标1~6对应星级，0暂时闲置
-
 	
+	//简历池：二维数组，一维下标对应星级，二维下标动态，值为简历引用
+	protected Vector<Resume>[] m_resumePool = new Vector[7];
+	
+	/**
+	 * 初始化简历池，将存储在xml文件中的简历信息读取到简历池中。
+	 * 单个xml文件解析测试完毕
+	 */
+	public void initResumePool() {
+		for(int i=0;i<7;i++) {
+			m_resumePool[i] = new Vector<Resume>();
+		}
+		
+		try{
+			String urlString = "F:\\Develop\\java_develop\\java_workspace\\Africanights\\config\\resume\\Melantha.xml";
+			//File f=new File(urlString);//创建文件对象
+			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder=factory.newDocumentBuilder();
+			Document doc = builder.parse(urlString);
+			
+			
+			NodeList nl = doc.getElementsByTagName("resume");
+			String nameString= doc.getElementsByTagName("name").item(0).getFirstChild().getNodeValue();
+			String starString= doc.getElementsByTagName("star").item(0).getFirstChild().getNodeValue();
+			String chatString= doc.getElementsByTagName("chat").item(0).getFirstChild().getNodeValue();
+			System.out.format("[%s](%s星)%s\n", nameString,starString,chatString);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	/**
 	 * 根据星级概率抽取出一个星级，取值为1~6
@@ -56,7 +95,7 @@ public class Pool {
 	
 	
 	public static void main(String[] args) {
-		//测试randomStar()
+		/*/测试randomStar()
 		Pool pool = new Pool();
 		int[] counter=new int[7];
 		for(int i=0;i<100;i++) {
@@ -69,6 +108,11 @@ public class Pool {
 		}
 		//测试randomStar()*/
 
+		//测试initResumePool()
+		Pool pool = new Pool();
+		pool.initResumePool();	
+		//测试initResumePool()*/
+		
 	}
 
 }
