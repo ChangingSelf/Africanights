@@ -3,6 +3,8 @@
  */
 package africanights.model;
 
+import java.util.logging.Logger;
+
 public class Resume {
 	
 	protected String m_name = "";//干员代号
@@ -56,6 +58,10 @@ public class Resume {
 		this.m_portrayal = portrayal;
 	}
 
+	public void show() {
+		System.out.format("%s\n", m_portrayal);
+		System.out.format("[%s](%s星)%s\n", m_name,String.valueOf(m_star),m_chat);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

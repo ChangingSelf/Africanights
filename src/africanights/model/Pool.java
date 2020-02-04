@@ -13,6 +13,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Pool {
@@ -29,32 +30,46 @@ public class Pool {
 	
 	/**
 	 * 初始化简历池，将存储在xml文件中的简历信息读取到简历池中。
-	 * 单个xml文件解析测试完毕
+	 * 
 	 */
 	public void initResumePool() {
 		for(int i=0;i<7;i++) {
 			m_resumePool[i] = new Vector<Resume>();
 		}
 		
+		
+		
+		
+	}
+	
+	
+	/**
+	 * 载入简历对象
+	 * @param path 简历文件路径
+	 * @return 简历对象
+	 */
+	public Resume loadResume(String path) {
+		Resume resume = null;
 		try{
-			String urlString = "F:\\Develop\\java_develop\\java_workspace\\Africanights\\config\\resume\\Melantha.xml";
-			//File f=new File(urlString);//创建文件对象
-			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder=factory.newDocumentBuilder();
-			Document doc = builder.parse(urlString);
+			//解析xml文件
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(path);
 			
-			
-			NodeList nl = doc.getElementsByTagName("resume");
 			String nameString= doc.getElementsByTagName("name").item(0).getFirstChild().getNodeValue();
 			String starString= doc.getElementsByTagName("star").item(0).getFirstChild().getNodeValue();
+			int starInt = Integer.valueOf(starString);
 			String chatString= doc.getElementsByTagName("chat").item(0).getFirstChild().getNodeValue();
-			System.out.format("[%s](%s星)%s\n", nameString,starString,chatString);
+			String portrayalString= doc.getElementsByTagName("portrayal").item(0).getFirstChild().getNodeValue();
 			
+			
+			resume = new Resume(nameString, starInt, chatString, portrayalString);
+			resume.show();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
-		
+		return resume;
 	}
 	
 	/**
@@ -110,7 +125,8 @@ public class Pool {
 
 		//测试initResumePool()
 		Pool pool = new Pool();
-		pool.initResumePool();	
+		//pool.initResumePool();
+		pool.loadResume("F:\\Develop\\java_develop\\java_workspace\\Africanights\\config\\resume\\Melantha.xml");
 		//测试initResumePool()*/
 		
 	}
