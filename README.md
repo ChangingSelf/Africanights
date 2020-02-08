@@ -4,7 +4,8 @@
 
 ## 博文连载
 
-[【编程练习】明日非舟抽卡模拟器（1）按照概率抽取干员星级](http://yxchangingself.xyz/posts/Africanights_simu_hr_1/#more)
+- [【编程练习】明日非舟抽卡模拟器（1）按照概率抽取干员星级](http://yxchangingself.xyz/posts/Africanights_simu_hr_1/#more)
+- [【编程练习】明日非舟抽卡模拟器（2）xml文件解析](http://yxchangingself.xyz/posts/Africanights_simu_hr_2/)
 
 ## 环境
 
