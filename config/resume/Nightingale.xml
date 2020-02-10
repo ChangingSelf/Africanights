@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resume>
+    <name>夜莺</name>
+	<codename>Nightingale</codename>
+	<profession>medic</profession>
+    <star>6</star>
+    <chat>丽兹，这是我真正的名字。除此之外的事情，我都不记得了......</chat>
+    <portrayal>config/image/Nightingale.jpg</portrayal>
+</resume>

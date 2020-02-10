@@ -69,7 +69,7 @@ public class Pool {
 				for(Resume resume:m_resumePool[star]) {
 					System.out.printf("[%s]", resume.getName());
 				}
-				
+				System.out.printf("\n");
 			}
 			
 		}
@@ -186,26 +186,19 @@ public class Pool {
 	}
 	
 	public static void main(String[] args) {
-		/*/测试randomStar()
+		//测试randomResume()
 		Pool pool = new Pool();
+		pool.showResumePool();
 		int[] counter=new int[7];
 		for(int i=0;i<100;i++) {
-			int star = pool.randomStar();//测试randomStar()
-			System.out.format("%d\n",star);
-			counter[star]++;
+			Resume resume = pool.randomResume();//抽取
+			counter[resume.getStar()]++;
 		}
 		for(int i=0;i<7;i++) {
 			System.out.format("抽到%d星%d个\n",i,counter[i]);
 		}
-		//测试randomStar()*/
-
-		//测试initResumePool()
-		Pool pool = new Pool();
-		//pool.initResumePool();
-		pool.showResumePool();
-		pool.randomResume().show();
-		//pool.loadResume("config\\resume\\Melantha.xml");
-		//测试initResumePool()*/
+		//测试randomResume()*/
+		
 		
 	}
 

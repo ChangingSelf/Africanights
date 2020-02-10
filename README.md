@@ -84,18 +84,26 @@ public class Pool {
 }
 ```
 
-### 初始化卡池
+### 抽卡测试
 
 ```java
 public class Pool {
     //...
 	public static void main(String[] args) {
-	//测试initResumePool()
-	Pool pool = new Pool();
-	//pool.initResumePool();
-	pool.showResumePool();
-	//pool.loadResume("config\\resume\\Melantha.xml");
-	//测试initResumePool()*/
+        
+		//测试randomResume()
+		Pool pool = new Pool();
+		pool.showResumePool();
+		int[] counter=new int[7];
+		for(int i=0;i<100;i++) {
+			Resume resume = pool.randomResume();//抽取
+			counter[resume.getStar()]++;
+		}
+		for(int i=0;i<7;i++) {
+			System.out.format("抽到%d星%d个\n",i,counter[i]);
+		}
+		//测试randomResume()*/
+        
 	}
 }
 
