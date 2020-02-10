@@ -5,5 +5,5 @@
 	<profession>medic</profession>
     <star>6</star>
     <chat>丽兹，这是我真正的名字。除此之外的事情，我都不记得了......</chat>
-    <portrayal>config/image/Nightingale.jpg</portrayal>
+    <portrayal>image/portrayal/Nightingale.png</portrayal>
 </resume>

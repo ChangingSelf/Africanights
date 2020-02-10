@@ -111,7 +111,7 @@ public class Pool {
 			professionString = professionString.toUpperCase();
 			
 			resume = new Resume(nameString, starInt, chatString, portrayalString,codenameString,Profession.valueOf(professionString));
-			resume.show();
+			//resume.show();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

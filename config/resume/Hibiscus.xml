@@ -5,5 +5,5 @@
 	<profession>medic</profession>
     <star>3</star>
     <chat>实习医生芙蓉，今天开始，我会负责您和罗德岛各位干员的健康管理项目，请多多关照！</chat>
-    <portrayal>config/image/Hibiscus.jpg</portrayal>
+    <portrayal>image/portrayal/Hibiscus.png</portrayal>
 </resume>
