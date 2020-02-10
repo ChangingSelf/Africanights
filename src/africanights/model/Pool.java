@@ -82,8 +82,11 @@ public class Pool {
 			String chatString= doc.getElementsByTagName("chat").item(0).getFirstChild().getNodeValue();
 			String portrayalString= doc.getElementsByTagName("portrayal").item(0).getFirstChild().getNodeValue();
 			
+			String codenameString = doc.getElementsByTagName("codename").item(0).getFirstChild().getNodeValue();
+			String professionString = doc.getElementsByTagName("profession").item(0).getFirstChild().getNodeValue();
+			professionString = professionString.toUpperCase();
 			
-			resume = new Resume(nameString, starInt, chatString, portrayalString);
+			resume = new Resume(nameString, starInt, chatString, portrayalString,codenameString,Profession.valueOf(professionString));
 			resume.show();
 		}catch(Exception e){
 			e.printStackTrace();
