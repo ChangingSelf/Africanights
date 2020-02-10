@@ -6,6 +6,7 @@
 package africanights.model;
 
 
+import java.io.File;
 import java.util.Random;
 import java.util.Vector;
 
@@ -38,6 +39,14 @@ public class Pool {
 			m_resumePool[i] = new Vector<Resume>();
 		}
 		//载入所有简历
+		String resumeDirPath = "config\\resume";
+		File resumeDir = new File(resumeDirPath);
+		//String[] resumeList = resumeDir.list();//读取简历的文件名
+		File[] resumeList = resumeDir.listFiles();//直接返回文件
+		
+		for(int i=0;i<resumeList.length;i++) {
+			loadResume(resumeList[i]);//载入简历
+		}
 		
 		
 		
@@ -50,12 +59,22 @@ public class Pool {
 	 * @return 简历对象
 	 */
 	public Resume loadResume(String path) {
+		File file = new File(path);
+		return loadResume(file);//为了只保留一个解析方式修改点
+	}
+	
+	/**
+	 * 载入单个简历
+	 * @param file 简历文件对象
+	 * @return 简历对象
+	 */
+	public Resume loadResume(File file) {
 		Resume resume = null;
 		try{
 			//解析xml文件
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document doc = db.parse(path);
+			Document doc = db.parse(file);
 			
 			String nameString= doc.getElementsByTagName("name").item(0).getFirstChild().getNodeValue();
 			String starString= doc.getElementsByTagName("star").item(0).getFirstChild().getNodeValue();
@@ -72,6 +91,7 @@ public class Pool {
 		
 		return resume;
 	}
+
 	
 	/**
 	 * 根据星级概率抽取出一个星级，取值为1~6
@@ -126,8 +146,8 @@ public class Pool {
 
 		//测试initResumePool()
 		Pool pool = new Pool();
-		//pool.initResumePool();
-		pool.loadResume("config\\resume\\Melantha.xml");
+		pool.initResumePool();
+		//pool.loadResume("config\\resume\\Melantha.xml");
 		//测试initResumePool()*/
 		
 	}
