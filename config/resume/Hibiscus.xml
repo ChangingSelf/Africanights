@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resume>
+    <name>芙蓉</name>
+	<codename>Hibiscus</codename>
+	<profession>medic</profession>
+    <star>3</star>
+    <chat>实习医生芙蓉，今天开始，我会负责您和罗德岛各位干员的健康管理项目，请多多关照！</chat>
+    <portrayal>config/image/Hibiscus.jpg</portrayal>
+</resume>

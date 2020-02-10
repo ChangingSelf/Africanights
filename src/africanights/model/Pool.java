@@ -33,10 +33,11 @@ public class Pool {
 	 * 
 	 */
 	public void initResumePool() {
-		for(int i=0;i<7;i++) {
+		//初始化简历池对象
+		for(int i=0;i<m_resumePool.length;i++) {
 			m_resumePool[i] = new Vector<Resume>();
 		}
-		
+		//载入所有简历
 		
 		
 		
@@ -126,7 +127,7 @@ public class Pool {
 		//测试initResumePool()
 		Pool pool = new Pool();
 		//pool.initResumePool();
-		pool.loadResume("F:\\Develop\\java_develop\\java_workspace\\Africanights\\config\\resume\\Melantha.xml");
+		pool.loadResume("config\\resume\\Melantha.xml");
 		//测试initResumePool()*/
 		
 	}
