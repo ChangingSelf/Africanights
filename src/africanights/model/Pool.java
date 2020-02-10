@@ -45,13 +45,33 @@ public class Pool {
 		File[] resumeList = resumeDir.listFiles();//直接返回文件
 		
 		for(int i=0;i<resumeList.length;i++) {
-			loadResume(resumeList[i]);//载入简历
+			Resume newResume = loadResume(resumeList[i]);//载入简历
+			m_resumePool[newResume.getStar()].add(newResume);//加入对应星级的简历池
 		}
 		
 		
 		
 	}
 	
+	/**
+	 * 展示卡池干员列表
+	 */
+	public void showResumePool() {
+		System.out.printf("--------------卡池干员列表---------------\n");
+		for(int star=1;star<m_starProbability.length;star++) {
+			if(!m_resumePool[star].isEmpty()) {
+				//若对应的简历池不为空
+				System.out.printf("【%d星】出率%.2f%%=============\n", star,100 * m_starProbability[star]);
+				for(Resume resume:m_resumePool[star]) {
+					System.out.printf("[%s]", resume.getName());
+				}
+				
+			}
+			
+		}
+		System.out.printf("\n");
+		
+	}
 	
 	/**
 	 * 载入简历对象
@@ -150,6 +170,7 @@ public class Pool {
 		//测试initResumePool()
 		Pool pool = new Pool();
 		pool.initResumePool();
+		pool.showResumePool();
 		//pool.loadResume("config\\resume\\Melantha.xml");
 		//测试initResumePool()*/
 		
