@@ -19,8 +19,9 @@
 
 - [x] 从1~6星中抽取星级
 - [x] 从文件载入单份简历
-- [ ] 初始化简历池
-- [ ] 从对应星级的简历池，抽取下一份简历
+- [x] 初始化简历池
+- [x] 从对应星级的简历池，抽取下一份简历
+- [ ] gui界面
 
 
 
@@ -30,9 +31,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resume>
     <name>玫兰莎</name>
+	<codename>Melantha</codename>
+	<profession>guard</profession>
     <star>3</star>
     <chat>......玫兰莎。从现在起，我的利刃将为您所用。</chat>
-    <portrayal>image/Melantha.jpg</portrayal>
+    <portrayal>config/image/Melantha.jpg</portrayal>
 </resume>
 ```
 
@@ -79,5 +82,22 @@ public class Pool {
 
 	}
 }
+```
+
+### 初始化卡池
+
+```java
+public class Pool {
+    //...
+	public static void main(String[] args) {
+	//测试initResumePool()
+	Pool pool = new Pool();
+	//pool.initResumePool();
+	pool.showResumePool();
+	//pool.loadResume("config\\resume\\Melantha.xml");
+	//测试initResumePool()*/
+	}
+}
+
 ```
 

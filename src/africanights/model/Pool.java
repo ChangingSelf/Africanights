@@ -29,6 +29,10 @@ public class Pool {
 	//简历池：二维数组，一维下标对应星级，二维下标动态，值为简历引用
 	protected Vector<Resume>[] m_resumePool = new Vector[7];
 	
+	public Pool() {
+		initResumePool();
+	}
+	
 	/**
 	 * 初始化简历池，将存储在xml文件中的简历信息读取到简历池中。
 	 * 
@@ -150,8 +154,36 @@ public class Pool {
 		return star;
 	}
 	
+	public int randomAvailableStar() {
+		int star;
+		do{
+			star = randomStar();
+		}while(m_resumePool[star].isEmpty());
+		return star;
+	}
 	
+	/**
+	 * 随机从简历池中抽取一个干员简历
+	 * @return 简历对象
+	 */
+	public Resume randomResume() {
+		if(isEmpty()) return null;
+		int star=randomAvailableStar();
+		Random random = new Random();
+		int index = random.nextInt(m_resumePool[star].size());//随机抽取
+		return m_resumePool[star].get(index);
+	}
 	
+	/**
+	 * 
+	 * @return 卡池是否为空
+	 */
+	public boolean isEmpty() {
+		for(int star=1;star<m_starProbability.length;star++) {
+			if(!m_resumePool[star].isEmpty()) return false;
+		}
+		return true;
+	}
 	
 	public static void main(String[] args) {
 		/*/测试randomStar()
@@ -169,8 +201,9 @@ public class Pool {
 
 		//测试initResumePool()
 		Pool pool = new Pool();
-		pool.initResumePool();
+		//pool.initResumePool();
 		pool.showResumePool();
+		pool.randomResume().show();
 		//pool.loadResume("config\\resume\\Melantha.xml");
 		//测试initResumePool()*/
 		
