@@ -7,6 +7,7 @@ package africanights.model;
 
 
 import java.io.File;
+import java.io.ObjectInputStream.GetField;
 import java.util.Random;
 import java.util.Vector;
 
@@ -28,6 +29,9 @@ public class Pool {
 	
 	//简历池：二维数组，一维下标对应星级，二维下标动态，值为简历引用
 	protected Vector<Resume>[] m_resumePool = new Vector[7];
+	
+	//单抽合成玉消耗
+	protected int m_compositeJadeCost = 600;
 	
 	public Pool() {
 		initResumePool();
@@ -183,6 +187,10 @@ public class Pool {
 			if(!m_resumePool[star].isEmpty()) return false;
 		}
 		return true;
+	}
+	
+	public int getCompositeJadeCost() {
+		return m_compositeJadeCost;
 	}
 	
 	public static void main(String[] args) {
